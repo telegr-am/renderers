@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 export RENDERER_HOME=$PWD
+mkdir -p ${RENDERER_HOME}/tmp
 pushd $(mktemp -p ${RENDERER_HOME}/tmp -d)
   export TEMP_DIR=$PWD
-  mkdir ./input
-  mkdir ./output
+  mkdir -p ./input
+  mkdir -p ./output/html
   pushd ./input
     git clone https://github.com/mojombo/mojombo.github.io.git ./main
     touch layout.json
@@ -15,7 +16,7 @@ pushd $(mktemp -p ${RENDERER_HOME}/tmp -d)
     --mount source=${TEMP_DIR}/output,target=/output,type=bind \
     renderer-jekyll
 
-  echo "Point your browser to ${TEMP_DIR}/output/index.html"
+  echo "Point your browser to ${TEMP_DIR}/output/html/index.html"
 popd
 
 
