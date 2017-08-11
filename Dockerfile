@@ -1,4 +1,9 @@
 FROM jekyll/minimal:3.5
 
-CMD ["jekyll", "-v"]
+RUN mkdir /input
+RUN mkdir /output
+
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
