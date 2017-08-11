@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export RENDERER_HOME=$PWD
-pushd $(mkdir ${RENDERER_HOME}/tmp)
+pushd $(mkdir -p ${RENDERER_HOME}/tmp)
   pushd $(mktemp -p ${RENDERER_HOME}/tmp -d)
     export TEMP_DIR=$PWD
     mkdir ./input
