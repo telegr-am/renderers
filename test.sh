@@ -7,7 +7,7 @@ pushd $(mkdir -p ${RENDERER_HOME}/tmp)
     mkdir ./input
     mkdir ./output
     pushd ./input
-      git clone https://github.com/github/training-kit.git ./main
+      git clone https://github.com/mojombo/mojombo.github.io.git ./main
       touch layout.json
     popd
 
