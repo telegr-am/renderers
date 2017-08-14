@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd /input/main
-npm install
+yarn install
 gatsby build
 
 mkdir -p /output/html
