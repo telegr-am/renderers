@@ -2,8 +2,8 @@ FROM jekyll/minimal:3.5
 
 # Install tools we'll need 
 RUN sudo apk update
-RUN sudo apk add 'git<2.12'
-RUN sudo apk add 'jq<1.6'
+RUN sudo apk add git
+RUN sudo apk add jq
 RUN sudo apk upgrade
 
 COPY ./entrypoint.sh /entrypoint.sh
