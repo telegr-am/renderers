@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
+ls -l /input/main/
 cd /input/main
-npm install
-gatsby build
+/usr/local/sbin/hugo 
 
 mkdir -p /output/html
 mv ./public/* /output/html
