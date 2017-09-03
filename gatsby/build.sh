@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker build -t renderer-gatsby -f ./Dockerfile .
+docker build -t opentelegram/gatsby:latest -f ./Dockerfile .
 

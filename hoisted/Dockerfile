@@ -12,4 +12,9 @@ RUN apt update && \
 
 RUN cd ~ && git clone https://github.com/hoisted/hoisted.git && \
     cd hoisted && git checkout tags/v0.4.0 && sbt assembly && \
-    cp target/scala-2.12/hoisted.jar ~ && cd ~ && rm -rf hoisted .ivy2
+    cp target/scala-2.12/hoisted.jar /usr/local/lib/hoisted.jar &&\
+    cd ~ && rm -rf hoisted .ivy2 .sbt
+
+COPY ./entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]

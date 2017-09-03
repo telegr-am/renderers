@@ -12,6 +12,8 @@ pushd $(mktemp -p ${RENDERER_HOME}/tmp -d)
   touch ./input/layout.json
 
   docker run --rm \
+    -ti \
+    --user="$(id -u $USER):$(id -g $USER)" \
     --mount source=${TEMP_DIR}/input,target=/input,type=bind \
     --mount source=${TEMP_DIR}/output,target=/output,type=bind \
     renderer-hugo

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker build -t renderer-jekyll -f ./Dockerfile .
+docker build -t opentelegram/jekyll:latest -f ./Dockerfile .
 

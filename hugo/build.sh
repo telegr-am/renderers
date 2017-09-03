@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker build -t renderer-hugo -f ./Dockerfile .
+docker build -t opentelegram/hugo -f ./Dockerfile .
 

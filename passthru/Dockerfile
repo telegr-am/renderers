@@ -1,6 +1,4 @@
-FROM jekyll/builder:3.5
-
-RUN apk --no-cache add sudo
+FROM ubuntu:16.04
 
 COPY ./entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh

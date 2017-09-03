@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-cd /input/main
+cd /input/
+cp -r main /tmp/
+cd /tmp/main/
 npm install
 gatsby build
 
-mkdir -p /output/html
 mv ./public/* /output/html
 
