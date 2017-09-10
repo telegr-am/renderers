@@ -11,7 +11,7 @@ RUN apt update && \
     apt install -y git sbt
 
 RUN cd ~ && git clone https://github.com/hoisted/hoisted.git && \
-    cd hoisted && git checkout tags/v0.4.0 && sbt assembly && \
+    cd hoisted && git checkout tags/v0.4.1 && sbt assembly && \
     cp target/scala-2.12/hoisted.jar /usr/local/lib/hoisted.jar &&\
     cd ~ && rm -rf hoisted .ivy2 .sbt
 
