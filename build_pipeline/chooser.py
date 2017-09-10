@@ -37,7 +37,7 @@ else:
 if os.path.isdir("/input/main/_serverless"):
     # yes... append the serverless renderer
     pipeline.append({'docker': 'opentelegram/serverless:latest',
-                     'secrets': True})
+                     'secrets': ["serverless_conf"]})
     # And tell the coordinator to move the _serverless directory to the
     # /input directory. This way, it won't be considered during rendering
     ret['move_to_input_root'] = [{'from': "main/_serverless", 'to': 'serverless'}]
