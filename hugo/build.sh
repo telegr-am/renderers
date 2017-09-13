@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-docker build -t opentelegram/hugo -f ./Dockerfile .
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+cd ${DIR}
+
+docker build -t opentelegram/hugo -f ./Dockerfile .
