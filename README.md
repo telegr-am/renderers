@@ -32,21 +32,8 @@ the container:
 * `TG_USER_TIMEZONE` -- the time zone of the user
 * `TG_USER_SITE` -- the domain of the site... e.g. `blog.goodstuff.im`
 
-The `/output` directory is readable
+The `/output` directory is readable and writable.
 
-The `/input/pipeline.json` file contains pipeline information.
+The `/input` directory is read-only.
 
-If your renderer leaves an `/output/repos.json` file of the format:
-
-```
-{
- 'version': 1,
- 'repos': [{'git_url': 'git:xxxxx', 'dest': 'foo'}]
- }
-```
-
-Telegram will attempt to fetch the named repos and place them
-in `/input/<dest>` and then re-run the render phase. This allows
-you to include private repositories that you have the credentials
-to access to be copied into the render job.
 
