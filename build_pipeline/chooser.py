@@ -27,6 +27,7 @@ elif os.path.isfile("/input/main/gatsby-config.js"):
 # How about Hoisted
 elif os.path.isfile("/input/main/_extra_info.md") or \
         os.path.isdir("/input/main/templates-hidden") or \
+        os.path.isfile("/input/main/site/index.cms.xml") or \
         os.path.isfile("/input/main/index.md"):
     renderer['docker'] = 'opentelegram/hoisted:latest'
 
