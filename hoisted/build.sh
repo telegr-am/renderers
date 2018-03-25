@@ -4,4 +4,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd ${DIR}
 
-docker build -t opentelegram/hoisted:latest -f Dockerfile .
+git clone https://github.com/hoisted/hoisted.git
+
+docker build -t shadowfiend/hoisted:latest -f Dockerfile .
+
+rm -rf hoisted/
