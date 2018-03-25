@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8 AS base
 
 RUN apt update && apt upgrade -y && \
     apt install -y apt-transport-https
@@ -10,11 +10,34 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B
 RUN apt update && \
     apt install -y git sbt
 
-RUN cd ~ && git clone https://github.com/hoisted/hoisted.git && \
-    cd hoisted && git checkout tags/v0.4.2 && sbt assembly && \
+RUN mkdir hoisted
+
+COPY hoisted/build.sbt hoisted/
+
+RUN mkdir hoisted/project
+
+COPY hoisted/project hoisted/project
+
+WORKDIR hoisted
+
+RUN sbt assembly
+
+WORKDIR /
+
+COPY hoisted hoisted
+
+WORKDIR hoisted
+
+RUN sbt assembly && \
     cp target/scala-2.12/hoisted.jar /usr/local/lib/hoisted.jar &&\
     cd ~ && rm -rf hoisted .ivy2 .sbt
 
 COPY ./entrypoint.sh /usr/bin/entrypoint.sh
+
+FROM openjdk:alpine
+
+COPY --from=base /usr/local/lib/hoisted.jar /usr/local/lib/hoisted.jar
+COPY --from=base /usr/bin/entrypoint.sh /usr/bin/entrypoint.sh
+
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
